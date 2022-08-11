@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Counter</title>
+</head>
+<style>
+    
+    body{
+        padding: 50px 100px;
+    }
+
+    h1{
+        text-align: center;
+        background-color: rgb(94, 203, 203);
+        border: 1px solid gray;
+        border-radius: 10px;
+        color: white;
+        text-shadow: 1px 2px 2px black;
+        padding: 10px;
+        margin: 0px;
+    }
+
+    textarea{
+        width: 98%;
+        border-color: black;
+    }
+
+    p{
+        text-align: center;
+        background-color: gray;
+        color: white;
+        padding: 10px ;
+        font-weight: bolder;
+    }  
+
+</style>
+<body>
+    <h1>Word and Character Counter</h1><!--heading-->
+    <textarea name="" id="words" placeholder="type here" cols="30" rows="10"></textarea>
+    <p><!--output of input-->
+        <span id="word"> 0</span> word and 
+        <span id="char"> 0</span> Character
+    </p>
+
+    <script>
+        let textbox =document.getElementById("words");//selection of text area by ID
+
+        //add event to fetch input 
+        textbox.addEventListener('input',function(){
+              var text = this.value; // value of input will store in text
+              let char = text.length; //length of text will assign in 'char'
+              
+              document.getElementById("char").innerHTML = char; //select id of charcter reader and send the length of charcter via 'char' variable
+
+              text = text.trim();
+              let words = text.split(" "); //wods will store the remaning words after sorting of  white spaces
+
+              var clean = words.filter(function(elment){
+                    return elment != ""; //here we  only passs that value which is not equal to white spaces to 'clean' variable
+              });
+             
+              document.getElementById("word").innerHTML = clean.length;
+              //fetch word output by id & change the inner html content into length (clean variable.length)
+              
+        }); 
+    </script>
+</body>
+</html>
